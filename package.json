@@ -1,0 +1,64 @@
+{
+	"name": "ref_parameBlabla_mono",
+	"version": "0.1.0",
+	"description": "The mono-repo for desiBlabla, desiBlabla-cli, desiBlabla-ui and desiBlabla-uis",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MYNAME/ref_parameBlabla_mono.git"
+	},
+	"homepage": "https://MYNAME.github.io/ref_parameBlabla_mono/",
+	"author": "MYNAME",
+	"license": "ISC",
+	"keywords": [
+		"parametrix",
+		"3D",
+		"CAD"
+	],
+	"type": "module",
+	"workspaces": [
+		"pkg/*"
+	],
+	"scripts": {
+		"desiBlabla:dev": "npm -w desiBlabla run dev",
+		"desiBlabla:ci": "npm -w desiBlabla run ci",
+		"desiBlabla:svgo": "npm -w desiBlabla run svgo",
+		"desiBlabla:clean": "npm -w desiBlabla run clean",
+		"desiBlabla:version": "npm -w desiBlabla version patch",
+		"desiBlabla:publish": "npm -w desiBlabla publish --provenance",
+		"desiBlabla-ui:dev": "npm -w desiBlabla-ui run dev",
+		"desiBlabla-ui:ci": "npm -w desiBlabla-ui run ci",
+		"desiBlabla-ui:clean": "npm -w desiBlabla-ui run clean",
+		"desiBlabla-ui:preview": "npm -w desiBlabla-ui run preview",
+		"desiBlabla-ui:version": "npm -w desiBlabla-ui version patch",
+		"desiBlabla-cli:ci": "npm -w desiBlabla-cli run ci",
+		"desiBlabla-cli:run": "npm -w desiBlabla-cli run run",
+		"desiBlabla-cli:clean": "npm -w desiBlabla-cli run clean",
+		"desiBlabla-cli:version": "npm -w desiBlabla-cli version patch",
+		"desiBlabla-cli:publish": "npm -w desiBlabla-cli publish --provenance",
+		"desiBlabla-uis:ci": "npm -w desiBlabla-uis run ci",
+		"desiBlabla-uis:copy_public": "npm -w desiBlabla-uis run copy_public",
+		"desiBlabla-uis:run": "npm -w desiBlabla-uis run run",
+		"desiBlabla-uis:clean": "npm -w desiBlabla-uis run clean",
+		"desiBlabla-uis:version": "npm -w desiBlabla-uis version patch",
+		"desiBlabla-uis:publish": "npm -w desiBlabla-uis publish --provenance",
+		"dev": "run-p desiBlabla:dev desiBlabla-ui:dev",
+		"ci": "run-s desiBlabla:ci desiBlabla-ui:ci desiBlabla-cli:ci desiBlabla-uis:ci",
+		"ci2": "run-s desiBlabla:ci desiBlabla-ui:ci",
+		"ci3": "run-s desiBlabla:ci desiBlabla-cli:ci",
+		"svgo": "run-s desiBlabla:svgo",
+		"clean-root": "rimraf tmp output output2",
+		"clean": "run-s clean-root desiBlabla:clean desiBlabla-ui:clean desiBlabla-cli:clean desiBlabla-uis:clean",
+		"preview": "run-s desiBlabla-ui:preview",
+		"run-uis": "run-s desiBlabla-uis:run",
+		"run-cli": "run-s desiBlabla-cli:run",
+		"versions": "run-s desiBlabla:version desiBlabla-ui:version desiBlabla-cli:version desiBlabla-uis:version",
+		"gh-publish": "run-s desiBlabla:publish desiBlabla-cli:publish desiBlabla-uis:publish",
+		"ls-workspaces": "npm -ws exec -c pwd"
+	},
+	"devDependencies": {
+		"@atao60/fse-cli": "^0.1.9",
+		"npm-run-all2": "^9.0.3",
+		"rimraf": "^6.1.3"
+	}
+}

@@ -1,0 +1,94 @@
+{
+	"name": "desiBlabla-uis",
+	"description": "feli-package desiBlabla-uis for installing locally the web-ui desiBlabla-ui",
+	"version": "0.1.0",
+	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MYNAME/ref_parameBlabla_mono.git"
+	},
+	"homepage": "https://MYNAME.github.io/ref_parameBlabla_mono/",
+	"author": "MYNAME",
+	"license": "ISC",
+	"keywords": [
+		"parametrix",
+		"3D",
+		"CAD"
+	],
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/desiBlabla-uis.d.ts",
+			"default": "./dist/desiBlabla-uis.js"
+		}
+	},
+	"bin": {
+		"desiBlabla-uis": "dist/desiBlabla-uis.js"
+	},
+	"files": [
+		"dist/",
+		"!dist/**/*.d.ts",
+		"!dist/**/*.map",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"engines": {
+		"node": ">=22.0.0"
+	},
+	"tsdown": {
+		"entry": [
+			"src/desiBlabla-uis.ts"
+		],
+		"format": "esm",
+		"target": "esnext",
+		"fixedExtension": false,
+		"splitting": false,
+		"dts": false,
+		"sourcemap": false,
+		"clean": true
+	},
+	"prettier": {
+		"useTabs": true,
+		"singleQuote": true,
+		"trailingComma": "none",
+		"printWidth": 100,
+		"plugins": [],
+		"overrides": []
+	},
+	"scripts": {
+		"dev": "tsdown --watch",
+		"build": "tsdown",
+		"check": "tsc --noEmit",
+		"pretty": "prettier --check .",
+		"format": "prettier --write .",
+		"lint": "eslint .",
+		"test:unit": "vitest",
+		"test:unit:once": "vitest --run",
+		"clean_public": "rimraf dist/public",
+		"copy_ui": "shx cp -r ../desiBlabla-ui/build dist/public",
+		"checkCopy": "ls -l dist/public/index.html",
+		"copy_public": "run-s clean_public copy_ui checkCopy",
+		"ci": "run-s check build pretty lint test:unit:once copy_public",
+		"run": "node dist/desiBlabla-uis.js",
+		"run-help": "node dist/desiBlabla-uis.js --help",
+		"clean": "rimraf node_modules build dist tmp"
+	},
+	"dependencies": {
+		"feli": "^1.0.16"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@types/eslint__js": "^8.42.3",
+		"@types/node": "^26.2.0",
+		"eslint": "^10.9.0",
+		"eslint-config-prettier": "^10.1.8",
+		"npm-run-all2": "^9.0.3",
+		"prettier": "^3.9.6",
+		"rimraf": "^6.1.3",
+		"shx": "^0.4.0",
+		"tsdown": "^0.23.1",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.67.0",
+		"vitest": "^4.1.11"
+	}
+}
